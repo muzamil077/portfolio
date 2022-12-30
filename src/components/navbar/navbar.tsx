@@ -84,7 +84,7 @@ const DropdownHeader = () => {
                   Home
                 </Link>
                 <Link
-                  href={"/products/products"}
+                  href={"/services"}
                   className=" text-black hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Services
