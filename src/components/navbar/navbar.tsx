@@ -1,9 +1,13 @@
 import Link from "next/link";
 import React, { useState } from "react";
+import {GiHamburgerMenu} from "react-icons/gi"
+import {RxCross1} from "react-icons/rx"
 import { CgProfile } from "react-icons/cg";
 
 const DropdownHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [state, setState] = useState(false)
+  const [show , setShow] = useState(false)
 
   const hendelClick = () => {
     setIsOpen(!isOpen);
@@ -13,58 +17,9 @@ const DropdownHeader = () => {
     <nav className="bg-white fixed w-full border-b-4 ">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            <button
-              type="button"
-              onClick={hendelClick}
-              className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              aria-controls="mobile-menu"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open main menu</span>
-
-              <svg
-                className="block h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-
-              <svg
-                className="hidden h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            <img
-              className="h-8 ml-20  w-auto lg:hidden"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-              alt="Your Company"
-            ></img>
-            <img
-              className="hidden h-8 w-auto lg:block"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-              alt="Your Company"
-            ></img>
+          <div onClick={()=> {setState(!state); setShow(!show)}} className="absolute inset-y-0 left-0 flex items-center p-2 text-2xl cursor-pointer sm:hidden">
+            { state ?  <i className=""><RxCross1/></i>:<GiHamburgerMenu/>}
+         
           </div>
           <div className="hidden sm:block cursor-pointer ">
             <Link href={"/"}>
@@ -89,19 +44,19 @@ const DropdownHeader = () => {
                 >
                   Services
                 </Link>
-                <a
-                  href="#"
-                  className="text-black hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                <Link
+                  href={"/portfolio"}
+                  className=" text-black hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Portfolio
-                </a>
+                </Link>
 
-                <a
-                  href="#"
-                  className="text-black hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                <Link
+                  href={"/testimonials"}
+                  className=" text-black hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Testimonial
-                </a>
+                  Testimonials
+                </Link>
               </div>
             </div>
           </div>
@@ -171,11 +126,11 @@ const DropdownHeader = () => {
           </div>
         </div>
       </div>
-      <div className="sm:hidden" id="mobile-menu">
-        <div className="space-y-1 px-2 pt-2 pb-3">
+      <div className="md:hidden" id="mobile-menu">
+        <div className={`space-y-1 ${show ? 'block' : 'hidden'}  px-2 pt-2 pb-3`}>
           <a
             href="#"
-            className="bg-gray-900 text-white block px-3 py-2 rounded-md  border-blue-400 text-base font-medium"
+            className="text-gray-500 text-white block px-3 py-2 rounded-md  border-blue-400 text-base font-medium"
             aria-current="page"
           >
             Home
@@ -183,21 +138,21 @@ const DropdownHeader = () => {
 
           <a
             href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            className="text-gray-500 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Servece
           </a>
 
           <a
             href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            className="text-gray-500 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Portfolio
           </a>
 
           <a
             href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            className="text-gray-500 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Testimonial
           </a>

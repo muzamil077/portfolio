@@ -2,6 +2,7 @@ import React from "react";
 import {CgWebsite} from "react-icons/cg"
 import Link from "next/link";
 import Button from "../../components/button/button";
+import Loading from "./loading/loading";
 
 export const products = [
   {
@@ -38,7 +39,6 @@ export const products = [
   {
     name: "Bussiness Analysis",
     Sname:"Full-Scale web  Development by  NorthAims Technologies",
-
     discription:
       "Our business analysts focus on the needs of your target audience to perform requirements engineering and outline the scope of the solution. They also bridge the gap between business stakeholders and an IT team to keep all the involved parties aligned.",
     slug: "learn-code",
@@ -54,6 +54,8 @@ export const products = [
 
 function Services() {
   return (
+    <>
+    <Loading/>
     <section className="bg-gray-200 py-20">
       <div className="container mx-auto px-6">
         <span>What I Do</span>
@@ -85,6 +87,7 @@ function Services() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 
